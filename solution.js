@@ -9,6 +9,8 @@ let reservation =
     email: null
 }
 
+changeContent('search-form-content');
+
 function changeContent(className) {
     document.querySelectorAll('.custom-form').forEach(div => div.classList.add('hidden'));
     if( document.querySelector(`.${className}`) != null){
@@ -16,6 +18,7 @@ function changeContent(className) {
     }
 }
 
+document.querySelector('#search-form-button').addEventListener('click', (e) => searchFormData(e));
 document.querySelector('#new-reservation').addEventListener('click', (e) => cleanData(e));
 
 function cleanData(e) {
@@ -59,4 +62,19 @@ function findRoom(e) {
     console.log(reservation);
     changeContent('guest-details-form-content');
 
+}
+function searchFormData(e) {
+    e.preventDefault();
+    const data = e.target.parentElement;
+    const checkIn = data.querySelector('#check-in').value;
+    const checkOut = data.querySelector('#check-out').value;
+    const people = data.querySelector('#people').value;
+    if (checkIn != '' && checkOut != '' && people != '' &&
+        new Date(checkIn) <= new Date(checkOut)) {
+        reservation.startDate = checkIn;
+        reservation.endDate = checkOut;
+        reservation.guestsCount = people;
+        console.log(reservation);
+        changeContent('search-result-form-content');
+    }
 }

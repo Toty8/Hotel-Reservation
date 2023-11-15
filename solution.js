@@ -39,7 +39,7 @@ function showThanksPage(e) {
     e.preventDefault();
     changeContent('thank-you-content');
 document.querySelector('#guest-details-back-btn').addEventListener('click', (e) => fillRoomForm(e));
-
+}
 function fillRoomForm(e) {
     e.preventDefault();
     changeContent('search-result-form-content');
@@ -126,3 +126,4 @@ function searchFormData(e) {
         changeContent('search-result-form-content');
     }
 }
+

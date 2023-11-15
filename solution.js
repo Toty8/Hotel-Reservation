@@ -22,7 +22,6 @@ function cleanData(e) {
     changeContent('search-form-content');
 }
 
-changeContent('guest-details-form-content');
 
 document.querySelector('#guest-details-back-btn').addEventListener('click', (e) => fillRoomForm(e));
 
